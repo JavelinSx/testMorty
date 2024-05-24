@@ -39,7 +39,7 @@ $unknown-color: #f39c12;
     height: initial;
     width: 80%;
   }
-  width: 600px;
+  width: 530px;
   height: 220px;
   display: flex;
   overflow: hidden;

@@ -1,5 +1,5 @@
 <template>
-    <input type="text" @change="updateText" v-model="inputText">
+    <input type="text" @change="updateText" v-model="inputText" placeholder="Имя персоонажа">
 </template>
 <script setup lang="ts">
     import { ref } from 'vue';
@@ -14,11 +14,13 @@
 </script>
 <style lang="scss" scoped>
 input[type="text"] {
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
 }
 
 input[type="text"]:hover {

@@ -8,6 +8,7 @@
 </script>
 <style lang="scss" scoped>
 button[type="submit"] {
+  width: 100%;
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;

@@ -1,5 +1,5 @@
 <template>
-    <select v-model="selectedValue" @change="handleChange">
+    <select v-model="selectedValue" @change="handleChange" placeholder="Выберите статус">
         <option v-for="(item, index) in options" :key="index" :value="item.value">{{ item.label }}</option>
     </select>
 </template>
