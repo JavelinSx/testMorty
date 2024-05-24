@@ -34,10 +34,7 @@
     grid-template-columns: auto auto;
   }
   @media (min-width: 1366px) and (max-width: 100vw){
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  @media (min-width: 1920px) and (max-width: 100vw){
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 </style>
