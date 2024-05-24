@@ -32,7 +32,7 @@ export const useMortyApi = defineStore('mortyapi',() => {
     const status = [
         {
             value: 'None',
-            label: 'None'
+            label: 'Выберите статус'
         },
         {
             value: 'Alive',

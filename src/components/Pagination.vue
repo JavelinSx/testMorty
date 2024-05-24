@@ -1,8 +1,8 @@
 <template>
     <div class="pagination">
-      <button @click="store.prevPageAction" :disabled="store.currentPage === 1">Prev</button>
+      <button @click="store.prevPageAction" :disabled="store.currentPage === 1">Назад</button>
       <input type="number" v-model.number="store.currentPage" min="1" :max="store.lastPage"  @change="goToPage">
-      <button @click="store.nextPageAction" :disabled="store.currentPage === store.lastPage">Next</button>
+      <button @click="store.nextPageAction" :disabled="store.currentPage === store.lastPage">Вперед</button>
     </div>
   </template>
   
