@@ -27,21 +27,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    grid-column-start: 1;
-    grid-column-end: 2;
     gap: 20px;
-    @media (min-width: 650px) and (max-width: 1366px){
+    @media (min-width: 650px) and (max-width: 100vw){
         min-width: 600px;
-    }
-    @media (min-width: 1366px) and (max-width: 1920px){
-        min-width: 600px;
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-    @media (min-width: 1920px) and (max-width: 100vw){
-        min-width: 600px;
-        grid-column-start: 1;
-        grid-column-end: 4;
     }
 }
 .filter-option{

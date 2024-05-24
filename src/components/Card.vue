@@ -21,118 +21,114 @@
 
 <script setup lang="ts">
   import { useMortyApi } from '@/stores/mortyApi';
-  import { computed, watch } from 'vue';
 
   const store = useMortyApi();
-
-
-
 
 </script>
 
 <style lang="scss">
-$alive-color: #2ecc71;
-$dead-color: #e74c3c;
-$unknown-color: #f39c12;
+  $alive-color: #2ecc71;
+  $dead-color: #e74c3c;
+  $unknown-color: #f39c12;
 
-.card {
-  @media (max-width: 640px){
-    flex-direction: column;
-    height: initial;
-    width: 80%;
-  }
-  width: 530px;
-  height: 220px;
-  overflow: hidden;
-  background: rgb(60, 62, 68);
-  border-radius: 0.5rem;
-  margin: 0.75rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  display: flex;
-  flex-direction: column;
-  color: #ecf0f1;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    padding: 0;
-  }
-  .card-info{
-    flex: 3 1 0%;
-    position: relative;
-    padding: 0.75rem;
-    color: rgb(255, 255, 255);
-    display: flex;
-    flex-direction: column;
-  }
-  .card-img-container{
-    flex: 2 1 0%;
-    width: 100%;
-  }
-  .character-image {
+  .card {
     @media (max-width: 640px){
-      height: 300px;
+      flex-direction: column;
+      height: initial;
+      width: 80%;
     }
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    opacity: 1;
-    transition: opacity 0.5s ease 0s;
-    object-position: center center;
-    object-fit: cover;
-  }
-
-  .card-content {
+    @media (min-width: 768px) {
+      flex-direction: row;
+      padding: 0;
+    }
+    width: 530px;
+    height: 220px;
+    overflow: hidden;
+    background: rgb(60, 62, 68);
+    border-radius: 0.5rem;
+    margin: 0.75rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    width: 100%;
+    color: #ecf0f1;
+    
+    .card-info{
+      flex: 3 1 0%;
+      position: relative;
+      padding: 0.75rem;
+      color: rgb(255, 255, 255);
+      display: flex;
+      flex-direction: column;
+    }
+    .card-img-container{
+      flex: 2 1 0%;
+      width: 100%;
+    }
+    .character-image {
+      @media (max-width: 640px){
+        height: 300px;
+      }
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+      opacity: 1;
+      transition: opacity 0.5s ease 0s;
+      object-position: center center;
+      object-fit: cover;
+    }
 
-    @media (min-width: 768px) {
-      width: 50%;
+    .card-content {
+      display: flex;
+      flex-direction: column;
       padding: 20px;
-    }
-  }
+      width: 100%;
 
-  .card-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-
-    .status-dot {
-      height: 10px;
-      width: 10px;
-      border-radius: 50%;
-      margin-right: 10px;
-
-      &.alive {
-        background-color: $alive-color;
-      }
-
-      &.dead {
-        background-color: $dead-color;
-      }
-
-      &.unknown {
-        background-color: $unknown-color;
+      @media (min-width: 768px) {
+        width: 50%;
+        padding: 20px;
       }
     }
 
-    .character-name {
-      font-size: 1em;
-      font-weight: bold;
-    }
-  }
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
 
-  .character-info {
-    text-align: left;
+      .status-dot {
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        margin-right: 10px;
 
-    .info-item {
-      margin-bottom: 10px;
+        &.alive {
+          background-color: $alive-color;
+        }
 
-      .label {
+        &.dead {
+          background-color: $dead-color;
+        }
+
+        &.unknown {
+          background-color: $unknown-color;
+        }
+      }
+
+      .character-name {
+        font-size: 1em;
         font-weight: bold;
       }
     }
+
+    .character-info {
+      text-align: left;
+
+      .info-item {
+        margin-bottom: 10px;
+
+        .label {
+          font-weight: bold;
+        }
+      }
+    }
   }
-}
 </style>

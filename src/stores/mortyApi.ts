@@ -51,44 +51,81 @@ export const useMortyApi = defineStore('mortyapi',() => {
     const selectFilter = ref('')
     const nameFilter = ref('')
     const currentPage = ref(1)
-    const lastPage = ref(42)
+    const lastPage = ref(41)
 
-    const prevPageAction = async() => {
-        if(currentPage.value>1){ 
-            currentPage.value = currentPage.value - 1;
+    const pageCounter = (value:number) => {
+        lastPage.value = Math.floor(value/20)+1
+        if(value<20){
+            currentPage.value = 1
         }
+    }
+    const prevPageAction = async() => {
+        try {
+            if(currentPage.value>1){ 
+                currentPage.value = currentPage.value - 1
+                await fetchCharactersNextPrev()          
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
     }
     const nextPageAction = async() => {
-        if(currentPage.value<lastPage.value){
-            currentPage.value = currentPage.value + 1;
+        try {
+            if (currentPage.value < lastPage.value) {
+                currentPage.value = currentPage.value + 1
+                await fetchCharactersNextPrev()
+            }
+        } catch (error) {
+            console.log(error)
         }
 
     }
-    const goToPage = async(value: number) => {
-        if(value<lastPage.value && value>0){
+    const goToPageView = async(value: number) => {
+        try {
             currentPage.value = value
+            await fetchCharactersNextPrev() 
+        } catch (error) {
+            console.log(error)
         }
+
     }
     const fetchCharacters = async() => {
         try {
-
             const response = await apolloClient.query({
                 query: query,
                 variables: {
-                    page: nameFilter.value !== '' ? currentPage.value = 1 : currentPage.value,
-                    status: selectFilter.value==='None' ? '' : selectFilter.value,
+                    page: 1,
+                    status: selectFilter.value === 'None' ? '' : selectFilter.value,
                     name: nameFilter.value
                 }
             });
-            characters.value = response.data.characters.results || []
-            
-
+    
+            characters.value = response.data.characters.results || [];
+            const countCharacter = response.data.characters.info.count
+            pageCounter(countCharacter)
+            currentPage.value = 1
         } catch (error) {
-
-            console.log(error)
+            console.log(error);
         } 
     }
-
+    const fetchCharactersNextPrev = async() => {
+        try {
+            const response = await apolloClient.query({
+                query: query,
+                variables: {
+                    page: currentPage.value,
+                    status: selectFilter.value === 'None' ? '' : selectFilter.value,
+                    name: nameFilter.value
+                }
+            });
+            characters.value = response.data.characters.results || [];
+            const countCharacter = response.data.characters.info.count
+            pageCounter(countCharacter)
+        } catch (error) {
+            console.log(error);
+        } 
+    }
     const selectedFilter = (value: string) => {
         selectFilter.value = value
     }
@@ -105,7 +142,7 @@ export const useMortyApi = defineStore('mortyapi',() => {
         nameFilter, 
         prevPageAction, 
         nextPageAction,
-        goToPage,
+        goToPageView,
         currentPage,
         lastPage,
     }

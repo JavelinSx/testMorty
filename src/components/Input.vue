@@ -1,16 +1,11 @@
 <template>
-    <input type="text" @change="updateText" v-model="inputText" placeholder="Имя персоонажа">
+    <input type="text" v-model="store.nameFilter" placeholder="Имя персоонажа" @keydown.enter="store.fetchCharacters()">
 </template>
 <script setup lang="ts">
-    import { ref } from 'vue';
     import { useMortyApi } from '@/stores/mortyApi';
 
     const store = useMortyApi();
-    const inputText = ref('')
 
-    const updateText = () => {
-        store.nameFilter = inputText.value
-    }
 </script>
 <style lang="scss" scoped>
 input[type="text"] {
@@ -24,11 +19,11 @@ input[type="text"] {
 }
 
 input[type="text"]:hover {
-  border-color: #4CAF50; /* зеленая рамка при наведении */
+  border-color: #4CAF50;
 }
 
 input[type="text"]:focus {
   outline: none;
-  border-color: #4CAF50; /* зеленая рамка при фокусе */
+  border-color: #4CAF50; 
 }
 </style>

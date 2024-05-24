@@ -1,6 +1,6 @@
 <template>
     <div class="select-container">
-        <select v-model="selectedValue" @click="handlePlaceHolderHidden" @change="handleChange">
+        <select v-model="selectedValue" @click="handlePlaceHolderHidden" @change="handleChange" @keypress.enter="store.fetchCharacters()">
             <option v-for="(item, index) in options" :key="index" :value="item.value">{{ item.label }}</option>
         </select>
         <span v-if="placeholderVisible" class="select-placeholder">Выберите статус</span>
