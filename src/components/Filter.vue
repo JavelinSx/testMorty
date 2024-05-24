@@ -29,17 +29,9 @@
     grid-column-start: 1;
     grid-column-end: 2;
     gap: 20px;
-    @media (min-width: 550px) and (max-width: 768px){
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-    @media (min-width: 768px) and (max-width: 1366px){
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
     @media (min-width: 1366px) and (max-width: 1920px){
         grid-column-start: 1;
-        grid-column-end: 4;
+        grid-column-end: 3;
     }
     @media (min-width: 1920px) and (max-width: 100vw){
         grid-column-start: 1;

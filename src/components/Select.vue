@@ -24,3 +24,36 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+select:hover {
+  border-color: #4CAF50; /* зеленая рамка при наведении */
+}
+
+select:focus {
+  outline: none;
+  border-color: #4CAF50; /* зеленая рамка при фокусе */
+}
+
+select option {
+  padding: 8px 12px;
+}
+
+select option:hover {
+  background-color: #f2f2f2; /* серый фон при наведении на опцию */
+}
+
+select option:checked {
+  background-color: #4CAF50; /* зеленый фон для выбранной опции */
+  color: white;
+}
+</style>

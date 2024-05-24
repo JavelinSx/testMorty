@@ -27,13 +27,12 @@
   justify-items: center;
   justify-content: center;
   gap: 1rem;
-  @media (min-width: 550px) and (max-width: 768px){
+  background: rgb(39, 43, 51);
+
+  @media (min-width: 1366px) and (max-width: 1920px){
     grid-template-columns: 1fr 1fr;
   }
-  @media (min-width: 768px) and (max-width: 1366px){
-    grid-template-columns: auto auto;
-  }
-  @media (min-width: 1366px) and (max-width: 100vw){
+  @media (min-width: 1920px) and (max-width: 100vw){
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
