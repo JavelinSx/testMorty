@@ -1,5 +1,5 @@
 <template>
-    <div class="card" v-for="(item, index) in data" :key="index">
+    <div class="card" v-for="(item, index) in store.characters" :key="index">
       <div class="card-img-container">
         <img class="character-image" :src="item.image" :alt="item.name">
       </div>
@@ -21,10 +21,12 @@
 
 <script setup lang="ts">
   import { useMortyApi } from '@/stores/mortyApi';
-  import { computed } from 'vue';
-  
+  import { computed, watch } from 'vue';
+
   const store = useMortyApi();
-  const data = computed(() => store.characters);
+
+
+
 
 </script>
 
@@ -41,7 +43,6 @@ $unknown-color: #f39c12;
   }
   width: 530px;
   height: 220px;
-  display: flex;
   overflow: hidden;
   background: rgb(60, 62, 68);
   border-radius: 0.5rem;

@@ -28,7 +28,7 @@ export const useMortyApi = defineStore('mortyapi',() => {
         cache
     })
 
-    const characters = ref<Character[]>()
+    const characters = ref<Character[]>([])
     const status = [
         {
             value: 'None',
@@ -53,34 +53,38 @@ export const useMortyApi = defineStore('mortyapi',() => {
     const currentPage = ref(1)
     const lastPage = ref(42)
 
-    const prevPageAction = () => {
+    const prevPageAction = async() => {
         if(currentPage.value>1){ 
             currentPage.value = currentPage.value - 1;
         }
     }
-    const nextPageAction = () => {
+    const nextPageAction = async() => {
         if(currentPage.value<lastPage.value){
             currentPage.value = currentPage.value + 1;
         }
 
     }
-    const goToPage = (value: number) => {
+    const goToPage = async(value: number) => {
         if(value<lastPage.value && value>0){
             currentPage.value = value
         }
     }
     const fetchCharacters = async() => {
         try {
+
             const response = await apolloClient.query({
                 query: query,
                 variables: {
-                    page: currentPage.value,
+                    page: nameFilter.value !== '' ? currentPage.value = 1 : currentPage.value,
                     status: selectFilter.value==='None' ? '' : selectFilter.value,
                     name: nameFilter.value
                 }
             });
-            characters.value = response.data.characters.results
+            characters.value = response.data.characters.results || []
+            
+
         } catch (error) {
+
             console.log(error)
         } 
     }
